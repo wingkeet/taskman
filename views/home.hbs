@@ -1,0 +1,38 @@
+<style>
+  header > h1 {
+    color: black;
+  }
+
+  .powered-by {
+    font-style: italic;
+  }
+
+  #logo {
+    width: 18em;
+  }
+
+  #messages {
+    font-family: "Lucida Console", Courier, monospace;
+    font-size: 0.8em;
+  }
+</style>
+
+<header>
+  <h1>Taskman - Live Demo</h1>
+</header>
+
+<p class="powered-by">
+  This site is powered by Node.js, Express and Handlebars.
+</p>
+
+{{> mascot}}
+
+<p>
+  <input type="number" id="task" min="0" max="20" value="4">
+  <input type="submit" id="submit" value="Submit">
+</p>
+<p>
+  Messages from WebSocket server:
+  <ol id="messages"></ol>
+</p>
+<script src="/js/sendTask.js" type="module"></script>
