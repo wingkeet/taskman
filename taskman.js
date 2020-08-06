@@ -20,7 +20,7 @@ class TaskMan {
     #callback
     #queue
     #workers = []
-    #status = [] // worker statuses
+    #wstatuses = [] // worker statuses
     #resolve = null // is either saved resolve() function or null
 
     constructor(options = {}) {
@@ -38,7 +38,7 @@ class TaskMan {
         for (let i = 0; i < this.#numWorkers; i++) {
             const worker = cp.fork(path.join(__dirname, 'worker.js'))
             this.#workers.push(worker)
-            this.#status.push('idle')
+            this.#wstatuses.push('idle')
 
             worker.on('exit', (code, signal) => {
                 debugPrint(`worker ${worker.pid} exited; code=${code} signal=${signal}`)
@@ -51,7 +51,7 @@ class TaskMan {
     }
 
     countBusyWorkers() {
-        return this.#status.reduce((count, status) => count + (status === 'busy' ? 1 : 0), 0)
+        return this.#wstatuses.reduce((count, status) => count + (status === 'busy' ? 1 : 0), 0)
     }
 
     getQueueLength() {
@@ -91,7 +91,7 @@ class TaskMan {
     #getNextIdleWorkerIndex() {
         for (let i = 0; i < this.#numWorkers; i++) {
             const index = (this.#nextWorkerIndex + i) % this.#numWorkers
-            if (this.#status[index] === 'idle') {
+            if (this.#wstatuses[index] === 'idle') {
                 this.#nextWorkerIndex = (index + 1) % this.#numWorkers
                 return index
             }
@@ -112,7 +112,7 @@ class TaskMan {
             taskWrapper.status = 'done'
             this.#callback?.(taskWrapper) // ES2020 optional chaining operator
 
-            this.#status[index] = 'idle'
+            this.#wstatuses[index] = 'idle'
             if (this.#resolve && this.isIdle()) {
                 // barrier() has been called and there is no more work to be done
                 this.#resolve()
@@ -121,7 +121,7 @@ class TaskMan {
             else if (taskWrapper = this.#queue.pop()) { // try to dequeue task
                 // Assign task to the next worker
                 index = this.#getNextIdleWorkerIndex()
-                this.#status[index] = 'busy'
+                this.#wstatuses[index] = 'busy'
                 const worker = this.#workers[index]
                 worker.once('message', taskCompletionCallback)
                 taskWrapper.status = 'processing'
@@ -138,7 +138,7 @@ class TaskMan {
         index = this.#getNextIdleWorkerIndex() // check workers
         if (index !== -1) {
             // Assign task to idle worker
-            this.#status[index] = 'busy'
+            this.#wstatuses[index] = 'busy'
             const worker = this.#workers[index]
             worker.once('message', taskCompletionCallback)
             const taskId = new ObjectId().toHexString()
