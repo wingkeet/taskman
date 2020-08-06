@@ -16,7 +16,7 @@ async function main() {
         const options = { numWorkers: 2, maxQueueLength: 2, callback }
         const taskman = new TaskMan(options)
         console.log(`main pid: ${process.pid}`)
-        console.log('worker pids:', taskman.pids())
+        console.log('worker pids:', taskman.wpids())
         console.log('max queue length:', options.maxQueueLength)
 
         const tasks = [ 4.4, 10, 5, -5, 7 ]
