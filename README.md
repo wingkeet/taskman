@@ -15,7 +15,7 @@ operator (?.) from ES2020.
 [bson](https://www.npmjs.com/package/bson), which is used to generate MongoDB ObjectIds.
 
 ### Getting Started
-We are going to start a Node.js process which hosts a HTTP server and a WebSocket server.
+We are going to start a Node.js process which hosts an HTTP server and a WebSocket server.
 Before we do that, use your code editor's Find in Files feature to search for the string
 `EDIT:`. There are two places where you need to indicate the URLs of those servers.
 
