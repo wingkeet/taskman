@@ -4,7 +4,7 @@ const cp = require('child_process')
 const os = require('os')
 const path = require('path')
 const util = require('util')
-const ObjectId = require('bson').ObjectId
+const { ObjectId } = require('bson')
 const Queue = require('./queue')
 
 const DEBUG = false
