@@ -71,7 +71,7 @@ class TaskMan {
                 resolve()
             }
             else {
-                // Save the resolve() function so that it could be called later
+                // Save the resolve() function so it could be called later
                 this.#resolve = resolve
             }
         })
