@@ -14,6 +14,14 @@ operator (?.) from ES2020.
 - The file `taskman.js` has one external dependency, i.e.,
 [bson](https://www.npmjs.com/package/bson), which is used to generate MongoDB ObjectIds.
 
+### Installation
+```
+$ cd ~
+$ git clone https://github.com/wingkeet/taskman.git
+$ cd taskman
+$ npm install
+```
+
 ### Getting Started
 We are going to start a Node.js process which hosts an HTTP server and a WebSocket server.
 Before we do that, use your code editor's Find in Files feature to search for the string
