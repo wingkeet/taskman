@@ -55,7 +55,7 @@ You should customize the `doWork()` function in
 [`worker.js`](https://github.com/wingkeet/taskman/blob/master/worker.js)
 For the purpose of this demo, I have written it such that it accepts a JavaScript
 `Number` as a task; real-world applications would most likely use a JavaScript
-`Object` instead. The `doWork()` function sleeps for the given number of seconds
+`Object` instead. My demo `doWork()` function sleeps for the given number of seconds
 and returns the double of the number as the result. It also produces an output file to
 be downloaded by the end user. If the task is a negative number, an error is produced.
 
