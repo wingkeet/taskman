@@ -62,7 +62,7 @@ be downloaded by the end user. If the task is a negative number, an error is pro
 ### Sequence Diagram
 ![Sequence diagram](public/images/sequence-diagram.svg)
 
-### Using the taskman module in a Node.js program
+### Using the taskman module in a Node.js CLI program
 ![taskman-cli](public/images/taskman-cli.png)
 
 ### Authors
