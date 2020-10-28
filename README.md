@@ -10,7 +10,8 @@ Configurable options are shown below:
 
 ### Prerequisites
 - The file `taskman.js` requires Node.js >= 14.0.0 due to usage of the
-[optional chaining operator (?.)]((https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining))
+[optional chaining operator (?.)]
+(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
 from ES2020.
 - The file `taskman.js` has one external dependency, i.e.,
 [bson](https://www.npmjs.com/package/bson), which is used to generate MongoDB ObjectIds.
