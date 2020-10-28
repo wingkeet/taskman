@@ -22,7 +22,7 @@ function appendMessageWithLink(message, href, filename) {
     messages.appendChild(li)
 }
 
-async function downloadFile(url, filename) {
+function downloadFile(url, filename) {
     const a = document.createElement('a')
     a.setAttribute('href', url)
     a.setAttribute('download', filename)
@@ -40,7 +40,7 @@ function sendTask(task) {
         const json = JSON.stringify({ task })
         ws.send(json)
     })
-    ws.addEventListener('message', async(event) => {
+    ws.addEventListener('message', (event) => {
         const json = event.data
         const data = JSON.parse(json)
         if (data.ok && data.status === 'done' && 'url' in data) {
