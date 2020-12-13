@@ -4,7 +4,7 @@
   "description": "Simple Task Manager",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "wingkeet",
@@ -18,13 +18,10 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "bson": "^4.2.0",
+    "bson": "^4.2.2",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
-    "ws": "^7.4.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.6"
+    "ws": "^7.4.1"
   },
   "homepage": "https://github.com/wingkeet/taskman"
 }
